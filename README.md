@@ -26,6 +26,16 @@ This repo contains oracle db studies notes.
     SELECT *  from emp  where SAL <= 1500 and JOB = 'CLERK';
     SELECT *  FROM emp  WHERE SAL <= 1500 AND JOB != 'CLERK';
 ```
+- **31 October 22 - Theory** 
+  - [Connecting with SQL*Plus 18c](https://www.oracle.com/au/database/technologies/instant-client/winx64-64-downloads.html)
+  - Oracle -> Database , store data permanently in secondary storage devices, Matrix formation
+    - SQL language 
+    - PL/SQL : Procedural language 
+    - Dynamic SQL
+  - ANSI standard SQL
+    - Oracle : oracel sql -> nvl()
+    - SQL server : sqlserver sql -> isnull()
+    - MYSQL : mysql sql -> ifnull()
 <details>
 
 <details>
