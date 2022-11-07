@@ -135,6 +135,43 @@ This repo contains oracle db studies notes.
 
 <details>
   <summary> Day 3 </summary>
+
+- Object Relational DBMS
+  - Data can be stored in table format
+  - Tabular format 
+  - Depends on SQL Language. Therefore they are called SQL d
+  - e.g. Oracle, SQL server, mysql, postgresql, db2, etc.
+  - 
+- Object Oriented DBMS
+  - data can be stored in "object" format
+  - Not depend on "SQL", NoSQL DB
+  - e.g. MongoDB, Cassandra, etc.
+
+- Oracle, DBMS, 1979 - store data/information permanently (e.g. hardisk) and along with security
+- Oracle can be deployed in any OS
+- Types of edition
+  - Oracle express 
+- Working with Oracle
+  - When working with oracle DB, follow the following two steps:
+    - Connect to Oracle server : use client tools
+        - SQL developer, **SQL plus** - CUI (Character User Interface)
+    - Communicate with Oracle DB : After successfully connecting to the server,
+      - needs to send request (SQL)
+      - get response back
+  - SQL plus
+    - db tool from oracle
+    - Used to connec to oracle server
+    - Can be used as an editor
+  - SQL
+    - DB language from IBM
+- Standard
+  - DDL
+  - DML
+  - DQL
+  - TCL
+  - DCL
+- How to connect to Oracle DB server
+- Download Oracle 19c, [sql plus](https://www.youtube.com/watch?v=Fh-1eO8SA9o)
 </details>
 
 <details>
