@@ -172,6 +172,19 @@ This repo contains oracle db studies notes.
   - DCL
 - How to connect to Oracle DB server
 - Download Oracle 19c, [sql plus](https://www.youtube.com/watch?v=Fh-1eO8SA9o)
+ - Go to All Programs -> Oracle 19db Home
+    - sql plus 
+    - Enter user-name:system
+    - Password : enterYourPassword - for security reason, the password will not be visible
+    - Login successful! Connected to:
+    - Another way - username is not case sensitive, but password is
+      - system/password
+      - SYSTEM/password 
+ - Common connection error fixing tips
+    - Go to services -> oracleServiceORCL -> select startup type: automatic -> click start button -> Apply -> OK
+    - GO to SQL plus -> enter username : system/password 
+    - TNS protocol adapter error 
+
 </details>
 
 <details>
