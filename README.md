@@ -186,15 +186,88 @@ This repo contains oracle db studies notes.
     - TNS protocol adapter error 
 
 </details>
-
+---
 <details>
   <summary> Day 4 </summary>
-</details>
+</details>  
+
+---
 
 <details>
   <summary> Day 5 </summary>
-</details>
+- [some tips](https://stackoverflow.com/questions/35199084/forgot-oracle-username-and-password-how-to-retrieve#:~:text=Once%20connected%2Cyou%20can%20enter,the%20password%20for%20that%20user.)
+- Structured Query English Language (SEQUEL), later SQL
+- SQL Plus : SQL*Plus is a client terminal software allowing users to interact with Oracle server to manipulate data and data structures. Users type in SQL statements in SQL*Plus that send statements to Oracle server. Oracle server then validates and executes the statements on its databases.
+- Sub languages of SQL
+  - DDL - Data definition language 
+    - create : a new db object in oracle db e.g.table, views, synonyms, procedure, function, triggers, etc.
+      - table is a core object of db. 
+      ```
+        CREATE TABLE <TABLE NAME>
+        ( 
+          <COLUMN NAME1> <DATATYPE>[SIZE], 
+          <COLUMN NAME1> <DATATYPE>[SIZE], 
+          <COLUMN NAME1> <DATATYPE>[SIZE]
+         );
+      ```
+    - alter
+      - alter modify
+      - alter -add 
+      - alter - rename
+      - alter - drop
+    - rename
+    - truncate
+    - drop
+  - new commands 
+    - recyclebin
+    - flashback
+    - purge
+- Data Manipulation Language (DML)
+  - insert
+  - update
+  - delete 
+  - new commands 
+    - insert all
+    - merge
+- Data query/ retrieval (DQL/DRL)
+  - select 
+- Transaction control langauge (TCL)
+  - commit 
+  - rollback
+  - savepoint 
+- Data control langauge (DCL)
+  - grant
+  - revoke 
+- <img src="http://2.bp.blogspot.com/-zYkYjhaqEps/VgS24O6hdqI/AAAAAAAAAVI/X_K858Bph7U/s1600/DDL_DML.jpg">
+- <img src="https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/sql-commands-ddl-dql-dml-dcl-tcl-with-examples/Images/SQL_Diagram.drawio.png">
 
+- Oracle data types
+  - numeric 
+    - int = number(38) - 38 digits 
+    - serial number column int - sno number(38), sno number(1)
+      - sno number(4) => you can save 1, 23, 554, 1234.
+    - number(p,s) => precision, counting all digits including left and right sides digits of a decimal point
+      - storing both integer and float values 
+      - number(p) - only integer
+      - number(p,s) - float values 
+      - e.g. 65.34 => precision = 4
+      - e.g. 1223589.34 => precision = 9
+      - e.g. S-SCALE 
+    - counting the right side digits only
+      - 89.22 => scale = 2, precision = 4
+      - 12345.67 => scale = 2, precision = 7 
+      - e.g. Product_Price(6,2) 
+  - string
+    - EMPLOYEE_NAME CHAR(10) -  'Sally', without '' is char
+    - [Data types](https://docs.oracle.com/database/121/SQLRF/sql_elements001.htm#SQLRF0021)
+  - long
+  - date
+  - raw and long 
+  - lob 
+ - <img src="https://cf.ppt-online.org/files1/slide/w/WahumSXpt1zDy46bOenj38g5wZEdJiPR0LCUYf/slide-10.jpg">
+
+</details>
+---
 <details>
   <summary> Day 6 </summary>
 </details>
