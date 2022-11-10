@@ -55,6 +55,8 @@ This repo contains oracle db studies notes.
 
 </details>
 
+---
+
 <details>
   <summary> Day 2 : Basic definitions => Datastorage, Data redundancy, inconsistency, retrieval, integrity, secuirty, indexing , DBMS, Models of DBMS</summary>
 
@@ -131,8 +133,8 @@ This repo contains oracle db studies notes.
 </details>
   
 ---
-  
-<details>
+ 
+  <details>
   <summary> Day 3 </summary>
 
 - Object Relational DBMS
@@ -185,7 +187,9 @@ This repo contains oracle db studies notes.
     - TNS protocol adapter error 
 
 </details>
+  
 ---
+  
 <details>
   <summary> Day 4 </summary>
 </details>  
@@ -194,6 +198,7 @@ This repo contains oracle db studies notes.
 
 <details>
   <summary> Day 5 </summary>
+  
 - [some tips](https://stackoverflow.com/questions/35199084/forgot-oracle-username-and-password-how-to-retrieve#:~:text=Once%20connected%2Cyou%20can%20enter,the%20password%20for%20that%20user.)
 - Structured Query English Language (SEQUEL), later SQL
 - SQL Plus : SQL*Plus is a client terminal software allowing users to interact with Oracle server to manipulate data and data structures. Users type in SQL statements in SQL*Plus that send statements to Oracle server. Oracle server then validates and executes the statements on its databases.
