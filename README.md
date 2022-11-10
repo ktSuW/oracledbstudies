@@ -128,11 +128,10 @@ This repo contains oracle db studies notes.
 
 - Advantages of DBMS
 
-
-
-
 </details>
-
+  
+---
+  
 <details>
   <summary> Day 3 </summary>
 
@@ -265,21 +264,28 @@ This repo contains oracle db studies notes.
   - raw and long 
   - lob 
  - <img src="https://cf.ppt-online.org/files1/slide/w/WahumSXpt1zDy46bOenj38g5wZEdJiPR0LCUYf/slide-10.jpg">
-
 </details>
+            
 ---
+            
 <details>
   <summary> Day 6 </summary>
 </details>
 
+ ---
+            
 <details>
   <summary> Day 7 </summary>
 </details>
-
+            
+ ---
+            
 <details>
   <summary> Day 8 </summary>
 </details>
 
+ ---
+            
 <details>
   <summary> Day 9 </summary>
 </details>
