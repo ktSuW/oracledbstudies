@@ -192,6 +192,11 @@ This repo contains oracle db studies notes.
   
 <details>
   <summary> Day 4 </summary>
+
+- Step 1: Connect to 
+- s
+- s
+
 </details>  
 
 ---
@@ -269,12 +274,85 @@ This repo contains oracle db studies notes.
   - raw and long 
   - lob 
  - <img src="https://cf.ppt-online.org/files1/slide/w/WahumSXpt1zDy46bOenj38g5wZEdJiPR0LCUYf/slide-10.jpg">
+
+ 
 </details>
+
             
 ---
             
 <details>
-  <summary> Day 6 </summary>
+  <summary> Session 7 : SQL connection issues </summary>
+
+- **Problem-1**
+ - \sys as sysdba (default username)
+ - password is sys (default password)
+ - alter user system account unlock;
+ - alter user system account lock;
+ - conn => connect
+ - **Problem-2**
+  - Services => OracleServiceORCL => Stop
+  - TNS: protocol adapter error
+  - Go To Services and check whether it is running or stop mode.
+    - Status Type -> Automatic 
+    - Start 
+
+  - **Problem -3**
+    - Enter username: username/ password
+    - Error : unreacheable host
+    - Solution: 
+      - Enter Username: \sys as sysdba
+      - Enter password: sys
+      - connected
+    - SQL> ALTER USER SYSTEM ACCOUNT UNLOCK;
+    - SQL> ALTER USER SYSTEM IDENTIFIED BY yournewpassword;
+    - SQL > CONN
+    - Enter username: system / yournewpassword
+    - connected
+  - **Problem -4**
+      - Enter Username: \sys as sysdba
+      - Enter password: sys
+      - error : Unable to connect to Oracle db server
+      - reinstall Oracle software 
+
+- How the client tool SQL Plus connect to SQL server
+  - When we install Oracle software, there are two components installed by the system automatically:
+    - Client component can perform the following three operations:
+      - User can connect
+      - User can send request to the server
+      - User get the response back from the server
+      - e.g. sql plus, sql developer, toad
+    - Server component
+      - Instance component
+        - It is a temporary memory (allocated from RAM location)
+        - This instance sub component can store data temporarily 
+      - Database component
+        - Permanent storage memory which will allocated from hard disk
+        - Storing data permanently
+    - Client Server architecture 
+      - Every newly inserted data first will go to the Instance memory
+      - If user wants to move data from instance memory into database, you need to commit.
+        - instance db(allocate from RAM) to the permanent storage database (allocate from HD) => commit
+      - data retrival is from permanent db
+        - select * from tab;
+  - create own user account (username and password) in Oracle db
+    - create user onisan identified by Ramen123
+    - If you come across with this error, [How to Resolve ORA-65096: invalid common user or role name](https://logic.edchen.org/how-to-resolve-ora-65096-invalid-common-user-or-role-name/) & [How to Resolve ORA-01109: database not open](https://logic.edchen.org/how-to-resolve-ora-01109-database-not-open/)
+      - show con_name
+      - alter session set container=orclpdb;
+      - create user Eden identified by house (credentials are assigned to the employees)
+        - First level security - you cannot use the credentials to connect to db.
+        - every new user is a dummy user. DBA needs to give permissions/priviledges
+      - HOw DBA grant permissions to user
+        - grant priviledgeName to username
+        - e.g. grant connect to Eden
+        - If the grant succeeded, user will be able to login
+        - Eden/house
+        - **unable to grant. debug**
+    - How to change password by user 
+      - select * from ALL_USERS;
+      - 58:00 minutes
+
 </details>
 
  ---
