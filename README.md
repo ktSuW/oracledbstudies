@@ -351,7 +351,19 @@ This repo contains oracle db studies notes.
         - **unable to grant. debug**
     - How to change password by user 
       - select * from ALL_USERS;
-      - 58:00 minutes
+      - SQL> PASSWORD 
+      - Enter old password and enter new password
+      - SQL > CONN
+      - Enter user-name: username/password
+    - How to recreate a new password for a user
+      - alter user username identified by new_password
+      - alter user mydb2pm identified by mydb2pm
+      - alter session set "_ORACLE_SCRIPT"=true;  
+      - grant sysdba to user_name;
+    - How to view usernames if we forget
+      - select username from All_USERS;
+    - How to drop a user from DB
+      - drop user username cascade;
 
 </details>
 
