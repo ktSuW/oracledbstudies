@@ -135,7 +135,7 @@ This repo contains oracle db studies notes.
 ---
  
   <details>
-  <summary> Day 3 </summary>
+  <summary> Day 3 : Intro Continued </summary>
 
 - Object Relational DBMS
   - Data can be stored in table format
@@ -188,21 +188,11 @@ This repo contains oracle db studies notes.
 
 </details>
   
----
-  
-<details>
-  <summary> Day 4 </summary>
-
-- Step 1: Connect to 
-- s
-- s
-
-</details>  
 
 ---
 
 <details>
-  <summary> Day 5 </summary>
+  <summary> Day 5 : SQL sublanguages overiew </summary>
   
 - [some tips](https://stackoverflow.com/questions/35199084/forgot-oracle-username-and-password-how-to-retrieve#:~:text=Once%20connected%2Cyou%20can%20enter,the%20password%20for%20that%20user.)
 - Structured Query English Language (SEQUEL), later SQL
@@ -370,21 +360,296 @@ This repo contains oracle db studies notes.
  ---
             
 <details>
-  <summary> Day 7 </summary>
+  <summary> Session 9:  Datatypes </summary>
+
+- String data type
+  - characters only string - A-Z, a-z
+    - non-unicode datatypes - supports to store localised data e.g. english language ONlY
+      - char(size) - fixed length datatype 
+        - static
+        - non unicode char -> 1 char = 1 byte
+        - Emp_Name char(10) => 'HELLO' - 5 bytes used -> 5 bytes remaining.
+        - Therefore, waste 5 bytes. If you know the size and it won't change, then use it. Otherwise, there is memory wastage.
+        - maximum size is 2000 bytes 
+      - varchar2(size)
+        - ANSII datatype , variable length datatype, dynamic
+        - maximum size is 4000 bytes
+        - Due to its dynamic nature, it will not waste memory like char. 
+        - 'Hello' -, Allocates 5 bytes, there is 0 memory bytes waste.
+          - 5 - 5 = 0
+    - unicode datatypes - supports multilingual langauges , n stands for national
+      - nChar(size)
+        - fixed length datatype , static,
+        - store unicode char (all national langauges)
+        - memory wastage is same was char.
+        - 2000 bytes
+      - nvarchar2(size)
+        - 4000 bytes
+        - n stands for national 
+  - alpanumeric characters
+- long data type
+  - dynamic datatype, store non unicode character & unicode character 
+  - 1 char == 1 byte
+  - maximum size is 2GB.
+  - customer_Address long - out of 2GB - 30bytes = 1024 x .....
+    - Name: Ellen Smith
+    - 123/45 Heaven Street, Earth 67890 
+  - **every table should have only one long data type column**
+- Date
+  - store date and time information 
+  - Date : store date & time information of particular day
+    - time is optional. If user does not enter time information by default, oracle server will take '00:00:00am' or '12:00:00am'
+    - date range must be from '01-jan-4712 bc' to '31-dec-9999ad'
+    - DateOfJoining => 11-Nov-2022 15:19 - system time and insertion time is different
+      - sysdate
+      - Oracle default date formate - 'DD-MON-YY/YYYY HH:MM:SS'
+      - '11-NOV-22 15:21:XX'
+      - 1    1   2  1  1  1   ---> 7 BYTES (fixed memory)
+  - Timestamp
+    - store date and time information along with milliseconds 
+    - Oracle default timestamp datatype is, 
+      - 'dd-mon-yy/yyyy hh:mm:ss.ms' 
+      - '11-Nov-2022 15:24:56.0000'
+      -  1  1   2    1  1  1  4  => 11 bytes - fixed memory 
+- [Raw and long raw ](https://docs.oracle.com/database/121/SQLRF/sql_elements001.htm#SQLRF0021)
+  - image file, multimedia files, audio files - in the form of binary format.
+  - database will convert pictures into binary format
+  - These datatypes are also called as "Binary data types"
+  - raw 
+    - maximum size : 2000 bytes
+  - long raw : 2GB
+- Lob datatypes
+  - lob - large objects
+  - clob - character large objects 
+    - store non-unicode char
+    - dynamic datatype
+    - maximum size is 4GB
+  - **Non-unicode char**
+    - char(size) - 2000 bytes
+    - varchar(size) - 4000 bytes
+    - long - 2GB
+    - clob - 4GB
+  - nclob
+    - national characters large object
+    - dynamic datatype
+    - maximum size - 4GB
+  - Unicode char
+    - nchar(size) - 2000 bytes
+    - nvarchar(size) - 4000
+    - long -2GB
+    - nclob - 4GB
+  - blob
+    - binary large object
+    - store image/audio/video file
+    - dynamic dataype
+    - maximum size = 4GB
+  - Binary data
+    - raw - 2000 bytes
+    - long raw - 2GB
+    - blob - 4GB
+
+
+
 </details>
             
  ---
             
 <details>
-  <summary> Day 8 </summary>
+  <summary> Session 10 : alter, grant, truncate, drop, recyclebin </summary>
+
+1. Connect to system/Yourpassword
+2. create user yourusername identified by youruserpassword
+3. grant connect
+
+- connect su/su
+4. create table Student(SId int, SName char(10), SFees number(6,2));
+
+```
+  dBA is system/YourPassword
+  create user su identified by su;
+  alter session set "_ORACLE_SCRIPT"=true;
+  alter session set container=ORCLPDB;
+  ORA-65024: Pluggable database ORCLPDB is not open.
+  ORA-01031: Insufficient privileges 
+
+  connect/ as sysdba;
+  grant all privileges to system;
+  grant connect to su;
+  ORA-01017: invalid username/password; logon denied
+  select * from ttab;
+
+
+  create table student 
+  (
+    SId int,
+    SName char(10),
+    SFees number(6,2)
+  );
+
+  If you have infufficient priviledges, you need to ask ssystem admin for permission
+  conn
+  grant create table to su;
+
+```
+- **View list of tables in oracle db**
+  - select * from tab;
+  - TName - table name
+  - TabType - which type of object you have created
+    - Tabtype - table object for Student
+    - ClusterId - 
+- **View the structure of table**
+  - desc means describe 
+  - desc Student;
+  - SId int, SId number(38) means int == number(38)
+- **Alter**
+  - To change/ modify the structure of a table
+  - Sub commands under alter
+    - alter - modify
+    - alter - add
+    - alter - rename
+    - alter - drop
+  - Alter modify 
+    - Change data type and size  e.g. char(10)
+    - alter table <Table Name> modify <Column Name> <New Datatype>[New size];
+    - alter table Student modify SName varchar2(20);
+  - Alter add
+    - add new column to an existing table
+    - alter table <table name> add <new column name> <datatype>[size];
+    - alter table Student add SAddress varchar2(20);
+    - You can only add column to the end of the table structure
+  - Alter rename
+    - Change the column's name
+    - alter table <table name> rename <column> <old column name> to <new column name>
+  - Rename - for renaming the table 
+    - Change a table name
+    - rename <old table name> <new table name>
+  - Alter drop (delete)
+    - alter table <table name> drop <column> <column name>;
+    - alter table Student drop column SFees;
+  
+  - Truncate 
+    - You have created a table with some columns. Structure of table, no data
+    - After that, users insert data. Then rows will be added.
+    - When you use truncate, only rows are deleted. Structure of the table remains.
+    - truncate table <table name>;
+    - you cannot delete specific row. In the query statement, you need to use where condition. where condition is not supported under the truncate command.
+    - insert into StudentInfo values(1, 'Kim', 'Busan', 'kim@moon.com');
+    - ORA-01959: no privileges on tablespace 'Users';
+    - conn
+    - system/yourpassword
+    - grant unlimited tablespace to su;
+    - After this, you have unlimited access to hardisk memory.
+    - You cannot delete it using where clause
+      - truncate table StudentInfo where SName='Son';
+    - commit;
+  - Drop
+    - To delele the entire table 
+    - drop table <table name>
+    - drop table StudentInfo;
+    - select * from tab;
+      - you will see tabtype - some address location
+      - After dropping your table, you will see the address.
+      - It means you have deleted temporarily 
+      - BIN$AboOgAhsTB+MAgBKRal/dA==$0
+        - BIN means recycle bin
+        - Before Oracle10g enterprise edition, once you drop the table from a database, that is permanent whereras from orcle10g enterprise edition, once you drop a table from a database, it is temporary.
+      - New Features in Oracle10g Enterprise Edition
+        - recyclebin
+        - flashback
+        - purge
+    - Recyclebin
+      - It is a system defined table.
+      - it is one of the table name, inbuilt table 
+      - desc recyclebin;
+      - select OBJECT_NAME, ORIGINAL_NAME from recyclebin;
+
 </details>
 
  ---
             
 <details>
-  <summary> Day 9 </summary>
+  <summary> Session 11 </summary>
+
+- set pagesize 100;
+- set lines 160;
+- desc recyclebin;
+- select * from tab;
+- **flashback** - restore what is in the recyclebin
+  - Use to restore deleted table from recyclebin to database memory 
+  - flashback table <table name> to before drop;
+  - e.g. flashback table StudentInfo to before drop;
+- **purge**
+  - delete your table permanently from database memory including recyclebin
+  - To delete a specific table from recyclebin
+  - purge table <table name>
+  - purge table Apartment;
+  - select * from tab;
+  - flashback table Apartment to before drop; // object not in Recycle bin
+- Delete all tables from recyclebin
+  - purge recyclebin;
+- Delete table from database permanently 
+  - drop table <table name> purge;
+- show user;  
+  - If you add as admin user;
+  - If the table is not showing in recyclebin, it means you have connected as system admin;
+  - Finished at 31:00min
+
 </details>
 
+---
+
 <details>
-  <summary> Day 10 </summary>
+  <summary> Session 12 </summary>
 </details>
+
+---
+
+<details>
+  <summary> Session 13 </summary>
+</details>
+
+---
+
+<details>
+  <summary> Session 14 </summary>
+</details>
+
+---
+
+<details>
+  <summary> Session 15 </summary>
+</details>
+
+
+---
+
+<details>
+  <summary> Session 16 </summary>
+</details>
+
+---
+
+<details>
+  <summary> Session 17 </summary>
+</details>
+
+
+---
+
+<details>
+  <summary> Session 18 </summary>
+</details>
+
+---
+
+<details>
+  <summary> Session 19 </summary>
+</details>
+
+---
+
+<details>
+  <summary> Session 20 </summary>
+</details>
+
+---
