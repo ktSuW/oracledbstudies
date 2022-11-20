@@ -448,37 +448,34 @@ This repo contains oracle db studies notes.
     - long raw - 2GB
     - blob - 4GB
 
-
-
 </details>
-            
- ---
-            
-<details>
-  <summary> Session 10 : alter, grant, truncate, drop, recyclebin </summary>
 
-1. Connect to system/Yourpassword
-2. create user yourusername identified by youruserpassword
-3. grant connect
+---
+
+<details>
+  <summary> Session 10: alter, grant, truncate, drop, recyclebin</summary>
+
+-  Connect to system/Yourpassword
+- create user yourusername identified by youruserpassword
+- grant connect
 
 - connect su/su
-4. create table Student(SId int, SName char(10), SFees number(6,2));
+- create table Student(SId int, SName char(10), SFees number(6,2));
+
+- dBA is system/YourPassword
+- create user su identified by su;
+- alter session set "_ORACLE_SCRIPT"=true;
+- alter session set container=ORCLPDB;
+- ORA-65024: Pluggable database ORCLPDB is not open.
+- ORA-01031: Insufficient privileges 
+
+- connect/ as sysdba;
+- grant all privileges to system;
+- grant connect to su;
+- ORA-01017: invalid username/password; logon denied
+- select * from ttab;
 
 ```
-  dBA is system/YourPassword
-  create user su identified by su;
-  alter session set "_ORACLE_SCRIPT"=true;
-  alter session set container=ORCLPDB;
-  ORA-65024: Pluggable database ORCLPDB is not open.
-  ORA-01031: Insufficient privileges 
-
-  connect/ as sysdba;
-  grant all privileges to system;
-  grant connect to su;
-  ORA-01017: invalid username/password; logon denied
-  select * from ttab;
-
-
   create table student 
   (
     SId int,
@@ -490,7 +487,7 @@ This repo contains oracle db studies notes.
   conn
   grant create table to su;
 
-```
+
 - **View list of tables in oracle db**
   - select * from tab;
   - TName - table name
@@ -527,7 +524,7 @@ This repo contains oracle db studies notes.
     - alter table <table name> drop <column> <column name>;
     - alter table Student drop column SFees;
   
-  - Truncate 
+- Truncate 
     - You have created a table with some columns. Structure of table, no data
     - After that, users insert data. Then rows will be added.
     - When you use truncate, only rows are deleted. Structure of the table remains.
@@ -542,7 +539,7 @@ This repo contains oracle db studies notes.
     - You cannot delete it using where clause
       - truncate table StudentInfo where SName='Son';
     - commit;
-  - Drop
+- Drop
     - To delele the entire table 
     - drop table <table name>
     - drop table StudentInfo;
@@ -557,18 +554,21 @@ This repo contains oracle db studies notes.
         - recyclebin
         - flashback
         - purge
-    - Recyclebin
+- Recyclebin
       - It is a system defined table.
       - it is one of the table name, inbuilt table 
       - desc recyclebin;
       - select OBJECT_NAME, ORIGINAL_NAME from recyclebin;
 
+
+```
+
 </details>
 
- ---
-            
+--- 
+
 <details>
-  <summary> Session 11 </summary>
+  <summary> Session 11 : Flashback, Purge, </summary>
 
 - set pagesize 100;
 - set lines 160;
@@ -598,58 +598,3 @@ This repo contains oracle db studies notes.
 
 ---
 
-<details>
-  <summary> Session 12 </summary>
-</details>
-
----
-
-<details>
-  <summary> Session 13 </summary>
-</details>
-
----
-
-<details>
-  <summary> Session 14 </summary>
-</details>
-
----
-
-<details>
-  <summary> Session 15 </summary>
-</details>
-
-
----
-
-<details>
-  <summary> Session 16 </summary>
-</details>
-
----
-
-<details>
-  <summary> Session 17 </summary>
-</details>
-
-
----
-
-<details>
-  <summary> Session 18 </summary>
-</details>
-
----
-
-<details>
-  <summary> Session 19 </summary>
-</details>
-
----
-
-<details>
-  <summary> Session 20 </summary>
-</details>
-
----
